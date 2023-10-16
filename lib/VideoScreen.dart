@@ -54,10 +54,20 @@ void dispose(){
 
       ),
 floatingActionButton: FloatingActionButton(onPressed: () {
-  _controller.value;
-}
-
+  setState(() {
+    if (_controller.value.isPlaying) {
+      _controller.pause();
+    } else {
+      _controller.play();
+    }
+  });
+},
+  child: Icon(
+    _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
+  ),
 ),
     );
-  }
 }
+
+  }
+
